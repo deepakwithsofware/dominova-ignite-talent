@@ -136,12 +136,16 @@ const Contact = () => {
                       </div>
                     </div>
                     
-                    <div className="flex items-start gap-4">
-                      <MapPin className="h-6 w-6 text-primary mt-1" />
+                     <div className="flex items-start gap-4">
+                      <MapPin className="h-6 w-6 text-primary mt-1 animate-bounce" />
                       <div>
-                        <h4 className="font-semibold mb-1">Location</h4>
-                        <p className="text-muted-foreground">Chennai, Tamil Nadu, India</p>
-                        <p className="text-sm text-muted-foreground mt-1">
+                        <h4 className="font-semibold mb-1">Office Location</h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          K 207, Casagrand Miro,<br />
+                          Vandalur-Walajabad Road,<br />
+                          Manivakkam, Tamil Nadu – 600048, India
+                        </p>
+                        <p className="text-sm text-muted-foreground mt-2">
                           Udyam Registered Startup
                         </p>
                       </div>
@@ -161,19 +165,30 @@ const Contact = () => {
               </Card>
 
               {/* Map */}
-              <Card className="bg-card border-border">
+              <Card className="bg-card border-border shadow-elegant">
                 <CardContent className="p-0">
-                  <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                  <div className="h-96 bg-muted rounded-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.50656736768!2d80.02168893067486!3d13.017523339248048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1645123456789!5m2!1sen!2sin"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0234567890123!2d80.1234567!3d12.9876543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU5JzE1LjYiTiA4MMKwMDcnMjQuNSJF!5e0!3m2!1sen!2sin!4v1645123456789!5m2!1sen!2sin&q=K+207,+Casagrand+Miro,+Vandalur-Walajabad+Road,+Manivakkam,+Tamil+Nadu+600048,+India"
                       width="100%"
                       height="100%"
-                      style={{ border: 0, borderRadius: '8px' }}
+                      style={{ border: 0 }}
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      title="DOMINOVA Location - Chennai"
+                      title="DOMINOVA Office Location - K 207, Casagrand Miro, Manivakkam"
                     />
+                  </div>
+                  <div className="p-4 bg-card">
+                    <div className="flex items-center gap-3">
+                      <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
+                      <div>
+                        <p className="font-semibold text-foreground">DOMINOVA Office</p>
+                        <p className="text-sm text-muted-foreground">
+                          K 207, Casagrand Miro, Vandalur-Walajabad Road, Manivakkam, TN 600048
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
