@@ -244,7 +244,7 @@ const InternshipDetails = () => {
                       </div>
                       
                       <Button variant="premium" size="lg" className="w-full" asChild>
-                        <Link to="/internship-registration">
+                        <Link to={`/internship-registration?domain=${encodeURIComponent(program.title)}`}>
                           Apply for {program.title}
                         </Link>
                       </Button>

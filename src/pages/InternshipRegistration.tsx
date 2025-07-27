@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,6 +12,7 @@ import { User, GraduationCap, Mail, Phone, MessageCircle } from "lucide-react";
 
 const InternshipRegistration = () => {
   const { toast } = useToast();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     fullName: "",
     collegeName: "",
@@ -19,6 +21,18 @@ const InternshipRegistration = () => {
     domains: [] as string[],
     introduction: ""
   });
+
+  // Auto-fill domain from URL parameter
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const domainParam = urlParams.get('domain');
+    if (domainParam && internshipDomains.includes(domainParam)) {
+      setFormData(prev => ({
+        ...prev,
+        domains: [domainParam]
+      }));
+    }
+  }, [location.search]);
 
   const internshipDomains = [
     "UI/UX Design",
