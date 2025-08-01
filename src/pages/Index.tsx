@@ -179,57 +179,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-secondary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">
-              What Our <span className="bg-gradient-primary bg-clip-text text-transparent">Students</span> Say
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Real experiences from students who have transformed their careers with DOMINOVA
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Priya Sharma",
-                role: "Web Development Intern",
-                content: "DOMINOVA's internship program gave me the practical skills I needed to land my dream job. The mentorship was exceptional!",
-                rating: 5
-              },
-              {
-                name: "Rahul Kumar",
-                role: "Data Analytics Intern", 
-                content: "The hands-on projects and expert guidance helped me transition from theory to real-world applications seamlessly.",
-                rating: 5
-              },
-              {
-                name: "Sneha Patel",
-                role: "UI/UX Design Intern",
-                content: "Amazing experience! The program structure and industry connections at DOMINOVA are unmatched. Highly recommended!",
-                rating: 5
-              }
-            ].map((testimonial, index) => (
-              <Card key={index} className="bg-card border-border hover:shadow-gold transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-primary fill-current" />
-                    ))}
-                  </div>
-                  <p className="text-muted-foreground mb-4 italic">"{testimonial.content}"</p>
-                  <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-dark relative overflow-hidden">
