@@ -23,16 +23,8 @@ const Navigation = () => {
     <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="flex space-x-1">
-              <div className="w-6 h-6 bg-gradient-primary transform rotate-45"></div>
-              <div className="w-6 h-6 bg-gradient-primary transform rotate-45 -ml-2"></div>
-            </div>
-            <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              DOMINOVA
-            </span>
-          </Link>
+          {/* Empty space where logo was */}
+          <div></div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">

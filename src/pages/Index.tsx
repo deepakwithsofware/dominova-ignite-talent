@@ -58,11 +58,11 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center text-muted-foreground animate-fade-in-up delay-700">
             <div className="flex items-center gap-2">
               <span>📧</span>
-              <span>dominovachennai@gmail.com</span>
+              <span>dominova.office@gmail.com</span>
             </div>
             <div className="flex items-center gap-2">
               <span>📞</span>
-              <span>+91 9025092699</span>
+              <span>+91 8754325192</span>
             </div>
           </div>
         </div>

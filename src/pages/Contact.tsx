@@ -118,7 +118,7 @@ const Contact = () => {
                       <Mail className="h-6 w-6 text-primary mt-1" />
                       <div>
                         <h4 className="font-semibold mb-1">Email</h4>
-                        <p className="text-muted-foreground">dominovachennai@gmail.com</p>
+                        <p className="text-muted-foreground">dominova.office@gmail.com</p>
                         <p className="text-sm text-muted-foreground mt-1">
                           We respond to emails within 24 hours
                         </p>
@@ -129,7 +129,7 @@ const Contact = () => {
                       <Phone className="h-6 w-6 text-primary mt-1" />
                       <div>
                         <h4 className="font-semibold mb-1">Phone</h4>
-                        <p className="text-muted-foreground">+91 9025092699</p>
+                        <p className="text-muted-foreground">+91 8754325192</p>
                         <p className="text-sm text-muted-foreground mt-1">
                           Available Mon-Fri, 9:00 AM - 6:00 PM IST
                         </p>

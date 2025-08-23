@@ -117,7 +117,7 @@ const PrivacyPolicy = () => {
                   <h3 className="text-lg font-semibold mb-3">2. Company Information</h3>
                   <div className="text-muted-foreground space-y-2">
                     <p>DOMINOVA is a Udyam-registered startup based in Chennai, Tamil Nadu, India.</p>
-                    <p>Contact: dominovachennai@gmail.com | +91 9025092699</p>
+                    <p>Contact: dominova.office@gmail.com | +91 8754325192</p>
                   </div>
                 </div>
 
@@ -192,7 +192,7 @@ const PrivacyPolicy = () => {
                     </Link>
                   </Button>
                   <Button variant="outline" size="lg" asChild>
-                    <a href="mailto:dominovachennai@gmail.com">
+                    <a href="mailto:dominova.office@gmail.com">
                       <Mail className="h-4 w-4 mr-2" />
                       Email Support
                     </a>

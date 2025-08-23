@@ -75,7 +75,7 @@ const FAQ = () => {
     },
     {
       question: "How can I contact DOMINOVA?",
-      answer: "You can reach us via email at dominovachennai@gmail.com or call us at +91 9025092699. Our team is available Monday to Friday, 9:00 AM to 6:00 PM IST."
+      answer: "You can reach us via email at dominova.office@gmail.com or call us at +91 8754325192. Our team is available Monday to Friday, 9:00 AM to 6:00 PM IST."
     },
     {
       question: "Do you provide placement assistance?",
@@ -208,7 +208,7 @@ const FAQ = () => {
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <a href="mailto:dominovachennai@gmail.com">
+                  <a href="mailto:dominova.office@gmail.com">
                     Email Us Directly
                   </a>
                 </Button>
