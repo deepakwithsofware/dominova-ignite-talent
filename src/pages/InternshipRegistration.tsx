@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Layout from "@/components/Layout";
 import { useToast } from "@/hooks/use-toast";
 import { User, GraduationCap, Mail, Phone, MessageCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const InternshipRegistration = () => {
   const { toast } = useToast();
@@ -75,23 +76,51 @@ const InternshipRegistration = () => {
       return;
     }
 
-    // TODO: Replace with actual Supabase backend call
-    console.log("Form submitted:", formData);
-    
-    toast({
-      title: "Application Submitted!",
-      description: "Thank you for applying. We'll review your application and get back to you soon.",
-    });
-    
-    // Reset form
-    setFormData({
-      fullName: "",
-      collegeName: "",
-      email: "",
-      phone: "",
-      domains: [],
-      introduction: ""
-    });
+    try {
+      // Insert into Supabase
+      const { error } = await supabase
+        .from('internship_registrations')
+        .insert({
+          full_name: formData.fullName,
+          college_name: formData.collegeName,
+          email: formData.email,
+          phone: formData.phone,
+          domains: formData.domains,
+          introduction: formData.introduction || null
+        });
+
+      if (error) {
+        console.error('Supabase error:', error);
+        toast({
+          title: "Submission Failed",
+          description: "There was an error submitting your application. Please try again.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      toast({
+        title: "Application Submitted!",
+        description: "Thank you for applying. We'll review your application and get back to you soon.",
+      });
+      
+      // Reset form
+      setFormData({
+        fullName: "",
+        collegeName: "",
+        email: "",
+        phone: "",
+        domains: [],
+        introduction: ""
+      });
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Submission Failed",
+        description: "There was an unexpected error. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
