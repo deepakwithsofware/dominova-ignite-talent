@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      internship_registrations: {
+        Row: {
+          college_name: string | null
+          created_at: string
+          domains: string[]
+          email: string
+          full_name: string
+          id: string
+          introduction: string | null
+          phone: string
+          updated_at: string
+        }
+        Insert: {
+          college_name?: string | null
+          created_at?: string
+          domains: string[]
+          email: string
+          full_name: string
+          id?: string
+          introduction?: string | null
+          phone: string
+          updated_at?: string
+        }
+        Update: {
+          college_name?: string | null
+          created_at?: string
+          domains?: string[]
+          email?: string
+          full_name?: string
+          id?: string
+          introduction?: string | null
+          phone?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
