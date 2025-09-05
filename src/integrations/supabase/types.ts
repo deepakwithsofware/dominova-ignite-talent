@@ -17,43 +17,35 @@ export type Database = {
       internship_registrations: {
         Row: {
           college_name: string | null
-          created_at: string
           domains: string[]
           email: string
           full_name: string
           id: string
           introduction: string | null
           phone: string
-          updated_at: string
         }
         Insert: {
           college_name?: string | null
-          created_at?: string
           domains: string[]
           email: string
           full_name: string
           id?: string
           introduction?: string | null
           phone: string
-          updated_at?: string
         }
         Update: {
           college_name?: string | null
-          created_at?: string
           domains?: string[]
           email?: string
           full_name?: string
           id?: string
           introduction?: string | null
           phone?: string
-          updated_at?: string
         }
         Relationships: []
       }
       trainer_registrations: {
         Row: {
-          city: string | null
-          created_at: string
           email: string
           experience_years: number | null
           expertise: string[] | null
@@ -62,11 +54,8 @@ export type Database = {
           introduction: string | null
           phone: string
           portfolio_url: string | null
-          updated_at: string
         }
         Insert: {
-          city?: string | null
-          created_at?: string
           email: string
           experience_years?: number | null
           expertise?: string[] | null
@@ -75,11 +64,8 @@ export type Database = {
           introduction?: string | null
           phone: string
           portfolio_url?: string | null
-          updated_at?: string
         }
         Update: {
-          city?: string | null
-          created_at?: string
           email?: string
           experience_years?: number | null
           expertise?: string[] | null
@@ -88,7 +74,6 @@ export type Database = {
           introduction?: string | null
           phone?: string
           portfolio_url?: string | null
-          updated_at?: string
         }
         Relationships: []
       }
