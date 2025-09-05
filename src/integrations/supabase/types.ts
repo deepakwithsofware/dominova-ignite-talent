@@ -50,6 +50,48 @@ export type Database = {
         }
         Relationships: []
       }
+      trainer_registrations: {
+        Row: {
+          city: string | null
+          created_at: string
+          email: string
+          experience_years: number | null
+          expertise: string[] | null
+          full_name: string
+          id: string
+          introduction: string | null
+          phone: string
+          portfolio_url: string | null
+          updated_at: string
+        }
+        Insert: {
+          city?: string | null
+          created_at?: string
+          email: string
+          experience_years?: number | null
+          expertise?: string[] | null
+          full_name: string
+          id?: string
+          introduction?: string | null
+          phone: string
+          portfolio_url?: string | null
+          updated_at?: string
+        }
+        Update: {
+          city?: string | null
+          created_at?: string
+          email?: string
+          experience_years?: number | null
+          expertise?: string[] | null
+          full_name?: string
+          id?: string
+          introduction?: string | null
+          phone?: string
+          portfolio_url?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

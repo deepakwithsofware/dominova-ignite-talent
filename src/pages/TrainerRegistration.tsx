@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Layout from "@/components/Layout";
 import { useToast } from "@/hooks/use-toast";
 import { UserCheck, Briefcase, Mail, Phone, LinkedinIcon, Award } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const TrainerRegistration = () => {
   const { toast } = useToast();
@@ -130,24 +131,56 @@ const TrainerRegistration = () => {
       return;
     }
 
-    // TODO: Replace with actual Supabase backend call
-    console.log("Trainer registration submitted:", formData);
-    
-    toast({
-      title: "Registration Submitted!",
-      description: "Thank you for your interest in training with DOMINOVA. We'll review your application and contact you soon.",
-    });
-    
-    // Reset form
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      experience: "",
-      linkedinProfile: "",
-      expertiseDomains: [],
-      bio: ""
-    });
+    try {
+      // Parse experience years from text input
+      const experienceYears = parseInt(formData.experience) || null;
+      
+      // Insert into Supabase
+      const { error } = await supabase
+        .from('trainer_registrations')
+        .insert({
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          expertise: formData.expertiseDomains,
+          experience_years: experienceYears,
+          portfolio_url: formData.linkedinProfile || null,
+          introduction: formData.bio || null
+        });
+
+      if (error) {
+        console.error('Supabase error:', error);
+        toast({
+          title: "Error",
+          description: "Failed to submit registration. Please try again.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      toast({
+        title: "Registration Submitted!",
+        description: "Thank you for your interest in training with DOMINOVA. We'll review your application and contact you soon.",
+      });
+      
+      // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        experience: "",
+        linkedinProfile: "",
+        expertiseDomains: [],
+        bio: ""
+      });
+    } catch (error) {
+      console.error('Unexpected error:', error);
+      toast({
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
