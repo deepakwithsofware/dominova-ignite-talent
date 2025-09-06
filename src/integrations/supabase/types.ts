@@ -14,30 +14,9 @@ export type Database = {
   }
   public: {
     Tables: {
-      contact: {
-        Row: {
-          email: string | null
-          id: number
-          message: string | null
-          name: string
-        }
-        Insert: {
-          email?: string | null
-          id?: number
-          message?: string | null
-          name: string
-        }
-        Update: {
-          email?: string | null
-          id?: number
-          message?: string | null
-          name?: string
-        }
-        Relationships: []
-      }
       contacts: {
         Row: {
-          created_at: string
+          created_at: string | null
           email: string
           id: string
           message: string
@@ -45,7 +24,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
-          created_at?: string
+          created_at?: string | null
           email: string
           id?: string
           message: string
@@ -53,7 +32,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
-          created_at?: string
+          created_at?: string | null
           email?: string
           id?: string
           message?: string
