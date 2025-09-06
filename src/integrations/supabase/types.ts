@@ -44,6 +44,7 @@ export type Database = {
       internship_registrations: {
         Row: {
           college_name: string | null
+          created_at: string
           domains: string[]
           email: string
           full_name: string
@@ -53,6 +54,7 @@ export type Database = {
         }
         Insert: {
           college_name?: string | null
+          created_at?: string
           domains: string[]
           email: string
           full_name: string
@@ -62,6 +64,7 @@ export type Database = {
         }
         Update: {
           college_name?: string | null
+          created_at?: string
           domains?: string[]
           email?: string
           full_name?: string
@@ -73,6 +76,7 @@ export type Database = {
       }
       trainer_registrations: {
         Row: {
+          created_at: string
           email: string
           experience_years: number | null
           expertise: string[] | null
@@ -83,6 +87,7 @@ export type Database = {
           portfolio_url: string | null
         }
         Insert: {
+          created_at?: string
           email: string
           experience_years?: number | null
           expertise?: string[] | null
@@ -93,6 +98,7 @@ export type Database = {
           portfolio_url?: string | null
         }
         Update: {
+          created_at?: string
           email?: string
           experience_years?: number | null
           expertise?: string[] | null

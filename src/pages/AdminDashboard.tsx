@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import Layout from "@/components/Layout";
 import { useToast } from "@/hooks/use-toast";
 import { Shield, Users, UserCheck, Search, Filter, Download, Eye, CheckCircle, Clock, XCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 const AdminDashboard = () => {
   const { toast } = useToast();
@@ -16,70 +17,44 @@ const AdminDashboard = () => {
   const [password, setPassword] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const [internApplications, setInternApplications] = useState<any[]>([]);
+  const [trainerApplications, setTrainerApplications] = useState<any[]>([]);
 
-  // Dummy data - replace with actual backend data
-  const internApplications = [
-    {
-      id: 1,
-      fullName: "Priya Sharma",
-      collegeName: "Anna University",
-      email: "priya.sharma@email.com",
-      phone: "+91 9876543210",
-      domains: ["UI/UX Design", "Web Development (Frontend)"],
-      introduction: "Passionate about creating user-friendly interfaces...",
-      status: "pending",
-      submittedAt: "2024-01-15"
-    },
-    {
-      id: 2,
-      fullName: "Rahul Kumar",
-      collegeName: "IIT Chennai",
-      email: "rahul.kumar@email.com",
-      phone: "+91 9876543211",
-      domains: ["Data Analytics", "Python"],
-      introduction: "Data enthusiast with strong analytical skills...",
-      status: "selected",
-      submittedAt: "2024-01-14"
-    },
-    {
-      id: 3,
-      fullName: "Sneha Patel",
-      collegeName: "VIT Chennai",
-      email: "sneha.patel@email.com",
-      phone: "+91 9876543212",
-      domains: ["Manual Testing", "Java"],
-      introduction: "Quality assurance focused with attention to detail...",
-      status: "hold",
-      submittedAt: "2024-01-13"
+  // Fetch applications data from Supabase
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchApplications();
     }
-  ];
+  }, [isLoggedIn]);
 
-  const trainerApplications = [
-    {
-      id: 1,
-      fullName: "Dr. Amit Verma",
-      email: "amit.verma@email.com",
-      phone: "+91 9876543220",
-      experience: "8 years",
-      linkedinProfile: "https://linkedin.com/in/amitverma",
-      expertiseDomains: ["Data Analytics", "Machine Learning", "Python"],
-      bio: "Senior Data Scientist with extensive industry experience...",
-      status: "selected",
-      submittedAt: "2024-01-12"
-    },
-    {
-      id: 2,
-      fullName: "Sarah Johnson",
-      email: "sarah.johnson@email.com",
-      phone: "+91 9876543221",
-      experience: "6 years",
-      linkedinProfile: "https://linkedin.com/in/sarahjohnson",
-      expertiseDomains: ["UI/UX Design", "Web Development (Frontend)"],
-      bio: "Creative designer with strong technical background...",
-      status: "pending",
-      submittedAt: "2024-01-11"
+  const fetchApplications = async () => {
+    try {
+      // Fetch intern applications sorted by created_at descending (newest first)
+      const { data: internData, error: internError } = await supabase
+        .from('internship_registrations')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (internError) throw internError;
+      setInternApplications(internData || []);
+
+      // Fetch trainer applications sorted by created_at descending (newest first)  
+      const { data: trainerData, error: trainerError } = await supabase
+        .from('trainer_registrations')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (trainerError) throw trainerError;
+      setTrainerApplications(trainerData || []);
+    } catch (error) {
+      console.error('Error fetching applications:', error);
+      toast({
+        title: "Error",
+        description: "Failed to fetch applications data",
+        variant: "destructive"
+      });
     }
-  ];
+  };
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -222,7 +197,7 @@ const AdminDashboard = () => {
                   <div>
                     <p className="text-sm text-muted-foreground">Selected</p>
                     <p className="text-2xl font-bold text-green-500">
-                      {[...internApplications, ...trainerApplications].filter(app => app.status === 'selected').length}
+                      0
                     </p>
                   </div>
                   <CheckCircle className="h-8 w-8 text-green-500" />
@@ -236,7 +211,7 @@ const AdminDashboard = () => {
                   <div>
                     <p className="text-sm text-muted-foreground">Pending</p>
                     <p className="text-2xl font-bold text-blue-500">
-                      {[...internApplications, ...trainerApplications].filter(app => app.status === 'pending').length}
+                      {internApplications.length + trainerApplications.length}
                     </p>
                   </div>
                   <Clock className="h-8 w-8 text-blue-500" />
@@ -295,20 +270,28 @@ const AdminDashboard = () => {
                           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                             <div className="flex-1">
                               <div className="flex items-start justify-between mb-2">
-                                <h3 className="font-semibold text-lg">{application.fullName}</h3>
-                                <Badge className={`${getStatusColor(application.status)} text-white`}>
-                                  {getStatusIcon(application.status)}
-                                  {application.status}
+                                <h3 className="font-semibold text-lg">{application.full_name}</h3>
+                                <Badge className="bg-blue-500 text-white">
+                                  <Eye className="h-4 w-4 mr-1" />
+                                  pending
                                 </Badge>
                               </div>
-                              <p className="text-sm text-muted-foreground mb-2">{application.collegeName}</p>
+                              <p className="text-sm text-muted-foreground mb-2">{application.college_name}</p>
                               <p className="text-sm text-muted-foreground mb-2">{application.email} • {application.phone}</p>
                               <div className="flex flex-wrap gap-2 mb-2">
-                                {application.domains.map((domain) => (
+                                {application.domains?.map((domain: string) => (
                                   <Badge key={domain} variant="outline">{domain}</Badge>
                                 ))}
                               </div>
-                              <p className="text-sm text-muted-foreground">Submitted: {application.submittedAt}</p>
+                              <p className="text-sm text-muted-foreground">
+                                Submitted: {new Date(application.created_at).toLocaleDateString('en-US', {
+                                  year: 'numeric',
+                                  month: 'short', 
+                                  day: 'numeric',
+                                  hour: '2-digit',
+                                  minute: '2-digit'
+                                })}
+                              </p>
                             </div>
                             <div className="flex gap-2">
                               <Button 
@@ -375,20 +358,28 @@ const AdminDashboard = () => {
                           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                             <div className="flex-1">
                               <div className="flex items-start justify-between mb-2">
-                                <h3 className="font-semibold text-lg">{application.fullName}</h3>
-                                <Badge className={`${getStatusColor(application.status)} text-white`}>
-                                  {getStatusIcon(application.status)}
-                                  {application.status}
+                                <h3 className="font-semibold text-lg">{application.full_name}</h3>
+                                <Badge className="bg-blue-500 text-white">
+                                  <Eye className="h-4 w-4 mr-1" />
+                                  pending
                                 </Badge>
                               </div>
                               <p className="text-sm text-muted-foreground mb-2">{application.email} • {application.phone}</p>
-                              <p className="text-sm text-muted-foreground mb-2">Experience: {application.experience}</p>
+                              <p className="text-sm text-muted-foreground mb-2">Experience: {application.experience_years} years</p>
                               <div className="flex flex-wrap gap-2 mb-2">
-                                {application.expertiseDomains.map((domain) => (
+                                {application.expertise?.map((domain: string) => (
                                   <Badge key={domain} variant="outline">{domain}</Badge>
                                 ))}
                               </div>
-                              <p className="text-sm text-muted-foreground">Submitted: {application.submittedAt}</p>
+                              <p className="text-sm text-muted-foreground">
+                                Submitted: {new Date(application.created_at).toLocaleDateString('en-US', {
+                                  year: 'numeric',
+                                  month: 'short',
+                                  day: 'numeric', 
+                                  hour: '2-digit',
+                                  minute: '2-digit'
+                                })}
+                              </p>
                             </div>
                             <div className="flex gap-2">
                               <Button 
