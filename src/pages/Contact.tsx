@@ -195,14 +195,14 @@ const Contact = () => {
                 <CardContent className="p-0">
                   <div className="h-96 bg-muted rounded-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0234567890123!2d80.1234567!3d12.9876543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU5JzE1LjYiTiA4MMKwMDcnMjQuNSJF!5e0!3m2!1sen!2sin!4v1645123456789!5m2!1sen!2sin&q=K+207,+Casagrand+Miro,+Vandalur-Walajabad+Road,+Manivakkam,+Tamil+Nadu+600048,+India"
+                      src="https://www.google.com/maps?q=12.883250,80.052111&hl=en&z=17&output=embed"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      title="DOMINOVA Office Location - K 207, Casagrand Miro, Manivakkam"
+                      title="DOMINOVA Office Location"
                     />
                   </div>
                   <div className="p-4 bg-card">
@@ -211,7 +211,7 @@ const Contact = () => {
                       <div>
                         <p className="font-semibold text-foreground">DOMINOVA Office</p>
                         <p className="text-sm text-muted-foreground">
-                          K 207, Casagrand Miro, Vandalur-Walajabad Road, Manivakkam, TN 600048
+                          Coordinates: 12°52'59.7"N 80°03'07.6"E
                         </p>
                       </div>
                     </div>
