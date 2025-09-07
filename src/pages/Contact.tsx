@@ -8,7 +8,6 @@ import Layout from "@/components/Layout";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import Map from "@/components/Map";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -194,12 +193,18 @@ const Contact = () => {
               {/* Map */}
               <Card className="bg-card border-border shadow-elegant">
                 <CardContent className="p-0">
-                  <Map 
-                    latitude={12.883244} 
-                    longitude={80.052111} 
-                    zoom={16}
-                    height="h-96"
-                  />
+                  <div className="h-96 bg-muted rounded-lg overflow-hidden">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0234567890123!2d80.1234567!3d12.9876543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU5JzE1LjYiTiA4MMKwMDcnMjQuNSJF!5e0!3m2!1sen!2sin!4v1645123456789!5m2!1sen!2sin&q=K+207,+Casagrand+Miro,+Vandalur-Walajabad+Road,+Manivakkam,+Tamil+Nadu+600048,+India"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="DOMINOVA Office Location - K 207, Casagrand Miro, Manivakkam"
+                    />
+                  </div>
                   <div className="p-4 bg-card">
                     <div className="flex items-center gap-3">
                       <MapPin className="h-5 w-5 text-primary flex-shrink-0" />
