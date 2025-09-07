@@ -110,19 +110,19 @@ const Gallery = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
             <Card className="bg-card border-border text-center">
               <CardContent className="p-6">
-                <div className="text-3xl font-bold text-primary mb-2">500+</div>
+                <div className="text-3xl font-bold text-primary mb-2">100+</div>
                 <div className="text-muted-foreground">Students Trained</div>
               </CardContent>
             </Card>
             <Card className="bg-card border-border text-center">
               <CardContent className="p-6">
-                <div className="text-3xl font-bold text-primary mb-2">50+</div>
+                <div className="text-3xl font-bold text-primary mb-2">10+</div>
                 <div className="text-muted-foreground">Workshops Conducted</div>
               </CardContent>
             </Card>
             <Card className="bg-card border-border text-center">
               <CardContent className="p-6">
-                <div className="text-3xl font-bold text-primary mb-2">25+</div>
+                <div className="text-3xl font-bold text-primary mb-2">10+</div>
                 <div className="text-muted-foreground">Expert Trainers</div>
               </CardContent>
             </Card>
