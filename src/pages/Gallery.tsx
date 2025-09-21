@@ -193,9 +193,14 @@ const Gallery = () => {
                 <button className="px-6 py-3 bg-gradient-primary text-primary-foreground rounded-lg font-semibold hover:shadow-glow transition-all duration-300">
                   Join Our Next Batch
                 </button>
-                <button className="px-6 py-3 border border-border text-foreground rounded-lg font-semibold hover:bg-secondary transition-all duration-300">
+                <a 
+                  href="https://www.instagram.com/dominova_chennai_?igsh=a3lvMTJocHQ4ZGk5" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 border border-border text-foreground rounded-lg font-semibold hover:bg-secondary transition-all duration-300 inline-block"
+                >
                   Follow Us on Social Media
-                </button>
+                </a>
               </div>
             </Card>
           </div>
